@@ -1,4 +1,4 @@
-$RegionList = Get-AWSRegion | ? Region -match '^us'
+$RegionList = Get-AWSRegion | Where-Object Region -match '^us'
 $ErrorActionPreference = 'continue'
 
 foreach ($Region in $RegionList.Region) {
