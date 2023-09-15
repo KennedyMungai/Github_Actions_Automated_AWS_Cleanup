@@ -1,4 +1,4 @@
-name: Workflow to be used to cleanup AWS resources
+name: AWS Resource Cleaner
 
 on:
     workflow_dispatch:
@@ -14,5 +14,5 @@ jobs:
             - name: AWS Authentication
               uses: aws-actions/configure-aws-credentials@v4
               with:
-                role-to-assume: arn:aws:iam::092376285579:oidc-provider/token.actions.githubusercontent.com
+                role-to-assume: arn:aws:iam::092376285579:role/aws-cleanup-using-github-actions
                 aws-region: us-east-1
