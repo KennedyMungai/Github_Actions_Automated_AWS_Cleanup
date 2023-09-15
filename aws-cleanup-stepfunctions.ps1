@@ -1,4 +1,5 @@
 $RegionList = Get-AWSRegion
+$ErrorActionPreference = 'continue'
 
 foreach ($Region in $RegionList.Region) {
     # Cleanup State Machines
