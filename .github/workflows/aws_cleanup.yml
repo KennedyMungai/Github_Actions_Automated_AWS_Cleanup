@@ -27,3 +27,6 @@ jobs:
               shell: pwsh
               run: |
                   ./aws-cleanup-stepfunctions.ps1
+            - name: Invoke the cleanup script for the EC2 instances
+              shell: pwsh
+              run: ./aws-cleanup-ec2.ps1
