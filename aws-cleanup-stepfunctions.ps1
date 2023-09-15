@@ -1,5 +1,9 @@
 # Cleanup State Machines
-Get-SFNStateMachineList | ForEach-Object { Remove-SFNStateMachine -StateMachineArn $PSItem.StateMachineArn -Force }
+$RegionList = Get-AWSRegion
 
-# Cleanup Activity Tasks
-Get-SFNActivityList | ForEach-Object { Remove-SFNActivity -ActivityArn $PSItem.ActivityArn -Force }
+foreach ($Region in $RegionList.Region) {
+    Get-SFNStateMachineList | ForEach-Object { Remove-SFNStateMachine -StateMachineArn $PSItem.StateMachineArn -Force }
+
+    # Cleanup Activity Tasks
+    Get-SFNActivityList | ForEach-Object { Remove-SFNActivity -ActivityArn $PSItem.ActivityArn -Force }
+}
