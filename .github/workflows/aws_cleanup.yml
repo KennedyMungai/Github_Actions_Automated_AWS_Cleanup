@@ -3,6 +3,8 @@ name: AWS Resource Cleaner
 on:
     workflow_dispatch:
     push:
+    # schedule:
+        # - cron: '0 5 * * *'
 
 permissions:
     id-token: write
