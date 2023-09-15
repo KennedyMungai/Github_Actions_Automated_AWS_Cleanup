@@ -27,6 +27,21 @@ jobs:
               shell: pwsh
               run: |
                   ./aws-cleanup-stepfunctions.ps1
-            - name: Invoke the cleanup script for the EC2 instances
+
+    aws-ec2-cleanup:
+        runs-on: ubuntu-latest
+        steps:
+            - name: AWS Authentication
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                  role-to-assume: arn:aws:iam::092376285579:role/aws-cleanup-using-github-actions
+                  aws-region: us-east-1
+            - name: Install the step functions module
               shell: pwsh
-              run: ./aws-cleanup-ec2.ps1
+              run: Install-Module -Name AWS.Tools.EC2 -Scope CurrentUser -Force
+            - name: Get the code
+              uses: actions/checkout@v4
+            - name: Invoke the cleanup script
+              shell: pwsh
+              run: |
+                  ./aws-cleanup-ec2.ps1
