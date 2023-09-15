@@ -20,5 +20,6 @@ jobs:
               shell: pwsh
               run: Install-Module -Name AWS.Tools.StepFunctions -Scope CurrentUser -Force
             - name: Invoke the cleanup script
+              shell: pwsh
               run: |
-                  ls
+                  ./aws-cleanup-stepfunctions.ps1
