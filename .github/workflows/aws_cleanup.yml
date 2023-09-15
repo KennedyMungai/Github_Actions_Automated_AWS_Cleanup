@@ -19,3 +19,6 @@ jobs:
             - name: Install the step functions module
               shell: pwsh
               run: Install-Module -Name AWS.Tools.StepFunctions -Scope CurrentUser -Force
+            - name: Invoke the cleanup script
+              run: |
+                ./aws-cleanup-stepfunctions.ps1
